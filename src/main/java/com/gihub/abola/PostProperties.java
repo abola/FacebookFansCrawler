@@ -1,7 +1,6 @@
 package com.gihub.abola;
 
 import com.github.abola.crawler.CrawlerPack;
-import org.apache.log4j.Logger;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
@@ -11,8 +10,8 @@ import java.util.Map;
 /**
  * Created by i5-4670 on 2017/4/17.
  */
-public class FeedProperties {
-    static Logger log = Logger.getLogger( FeedProperties.class );
+public class PostProperties {
+
 
     public static void main(String[] args) throws Exception{
 

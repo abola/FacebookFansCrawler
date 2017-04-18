@@ -20,7 +20,7 @@ public class PostProperties {
 
         Map<String,Object> auth = mysql.query("select * from auth").get(0);
         String api_key = auth.get("app_id")+"%7C"+auth.get("app_key");
-        List<Map<String,Object>> fansPages = mysql.query("select * from fans_page");
+        List<Map<String,Object>> fansPages = mysql.query("select * from fans_page where not EXISTS (select fans_id from posts where fans_id = id ) ");
 
 
 
@@ -48,7 +48,7 @@ public class PostProperties {
             if(insertSQL.length()>0) {
                 //System.out.println(insertSQL.substring(0, insertSQL.length() - 1));
                 String appendSql = insertSQL.substring(0, insertSQL.length() - 1);
-                mysql.execute("replace into posts(fans_id,object_id,message,created_time) values " + appendSql);
+                mysql.execute("insert into posts(fans_id,object_id,message,created_time) values " + appendSql + " on duplicate key update message=VALUES(message), created_time=VALUES(created_time)");
             }
         }
     }

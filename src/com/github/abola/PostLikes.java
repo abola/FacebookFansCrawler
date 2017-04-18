@@ -20,7 +20,7 @@ public class PostLikes {
 
         Map<String,Object> auth = mysql.query("select * from auth").get(0);
         String api_key = auth.get("app_id")+"%7C"+auth.get("app_key");
-        List<Map<String,Object>> fansPagePosts = mysql.query("select * from posts where done_time is null limit 1");
+        List<Map<String,Object>> fansPagePosts = mysql.query("select * from posts where done_time is null limit 3");
 
 
 

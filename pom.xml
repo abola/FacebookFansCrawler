@@ -8,15 +8,14 @@
   <packaging>jar</packaging>
 
   <name>Facebook 粉絲團爬蟲</name>
-  <description>This is a open project of Java. The project integrated Apache Commons-VFS and Jsoup. It can be grabbing data much easy.</description>
-  <url>https://github.com/abola/CrawlerPack</url>
+  <description>Facebook 粉絲團爬蟲範例</description>
+  <url>https://github.com/abola/FacebookFansCrawler</url>
 
   <scm>
-    <connection>scm:git:git@github.com:abola/CrawlerPack.git</connection>
-    <developerConnection>scm:git:git@github.com:abola/CrawlerPack.git</developerConnection>
-    <url>git@github.com:abola/CrawlerPack.git</url>
+    <connection>scm:git:git@github.com:abola/FacebookFansCrawler.git</connection>
+    <developerConnection>scm:git:git@github.com:abola/FacebookFansCrawler.git</developerConnection>
+    <url>git@github.com:abola/FacebookFansCrawler.git</url>
   </scm>
-
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>
@@ -40,6 +39,26 @@
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.abola</groupId>
+      <artifactId>crawler</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.16</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.41</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>19.0</version>
     </dependency>
   </dependencies>
 </project>

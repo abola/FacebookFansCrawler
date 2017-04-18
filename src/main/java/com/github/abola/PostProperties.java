@@ -1,4 +1,4 @@
-package com.gihub.abola;
+package main.java.com.github.abola;
 
 import com.github.abola.crawler.CrawlerPack;
 import org.jsoup.nodes.Document;
@@ -27,7 +27,7 @@ public class PostProperties {
         for(Map<String, Object> fansPage: fansPages){
 
             String id  = fansPage.get("id").toString();
-            String uri = "https://graph.facebook.com/v2.8/"+id+"/posts?access_token="+ api_key;
+            String uri = "https://graph.facebook.com/v2.8/"+id+"/posts?fields=id,message,created_time&limit=100&access_token="+ api_key;
 
 
             Document jsoup = CrawlerPack.start().getFromJson(uri);
@@ -35,19 +35,20 @@ public class PostProperties {
             StringBuilder insertSQL = new StringBuilder();
 
 
-            for(Element elem : jsoup.select("data ")){
-                String fans_id = elem.select("id").text();
+            for(Element elem : jsoup.select("data")){
+                String fans_id = elem.select("id").text().split("_")[0];
+                String object_id = elem.select("id").text().split("_")[1];
                 String message = elem.select("message").text().replaceAll("'"," ");
                 String created_time = elem.select("created_time").text().substring(0,19).replace("T"," ");
 
 
-                insertSQL.append("('"+fans_id+"','"+message+"','"+created_time+"'+INTERVAL 8 HOUR),");
+                insertSQL.append("("+fans_id+","+object_id+",'"+message+"','"+created_time+"'+INTERVAL 8 HOUR),");
             }
 
             if(insertSQL.length()>0) {
                 //System.out.println(insertSQL.substring(0, insertSQL.length() - 1));
                 String appendSql = insertSQL.substring(0, insertSQL.length() - 1);
-                mysql.execute("replace into posts(id,message,created_time) values " + appendSql);
+                mysql.execute("replace into posts(fans_id,object_id,message,created_time) values " + appendSql);
             }
         }
     }

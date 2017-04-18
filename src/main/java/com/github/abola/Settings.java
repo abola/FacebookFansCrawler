@@ -1,4 +1,4 @@
-package com.gihub.abola;
+package main.java.com.github.abola;
 
 /**
  * Created by i5-4670 on 2017/4/17.

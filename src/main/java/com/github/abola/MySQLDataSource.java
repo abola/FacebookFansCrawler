@@ -1,4 +1,4 @@
-package com.gihub.abola;
+package main.java.com.github.abola;
 
 
 import com.google.common.collect.ImmutableList;
